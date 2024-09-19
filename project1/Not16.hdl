@@ -12,5 +12,6 @@ CHIP Not16 {
     OUT out[16];
 
     PARTS:
+    // Use 16 individual Not gates to negate each bit of the input
     Nand16(a=in, b=in, out=out);
 }

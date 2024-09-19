@@ -11,9 +11,16 @@ CHIP Mux {
     OUT out;
 
     PARTS:
+    // Invert the sel signal
     Not(in=sel, out=notSel);
+
+    // First AND gate: a AND notSel
     And(a=a, b=notSel, out=aAndNotSel);
+
+    // Second AND gate: b AND sel
     And(a=b, b=sel, out=bAndSel);
+
+    // OR gate to combine both AND gate outputs
     Or(a=aAndNotSel, b=bAndSel, out=out);
 }
 // a b s
